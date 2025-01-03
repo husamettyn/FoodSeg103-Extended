@@ -1,6 +1,6 @@
 _base_ = [
     '../../_base_/models/segformer.py',
-    '../../_base_/datasets/FoodSeg103_512x512.py',
+    '../../_base_/datasets/FoodSeg103_768x768.py',
     '../../_base_/default_runtime.py',
     '../../_base_/schedules/schedule_80k.py'
 ]
@@ -28,7 +28,7 @@ model = dict(
         loss_decode=dict(type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0)),
     # model training and testing settings
     train_cfg=dict(),
-    test_cfg=dict(mode='slide', crop_size=(512, 512), stride=(384, 384)))
+    test_cfg=dict(mode='slide', crop_size=(768, 768), stride=(512, 512)))
 
 # optimizer
 optimizer = dict(_delete_=True, type='AdamW', lr=0.00006, betas=(0.9, 0.999), weight_decay=0.01,
